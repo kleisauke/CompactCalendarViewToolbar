@@ -1,4 +1,4 @@
-package com.example.kleisauke.myapplication;
+package nl.kleisauke.compactcalendarviewtoolbar;
 
 import org.junit.Test;
 

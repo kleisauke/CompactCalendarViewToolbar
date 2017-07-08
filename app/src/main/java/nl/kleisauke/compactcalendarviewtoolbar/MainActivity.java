@@ -1,4 +1,4 @@
-package com.example.compactcalendarviewtoolbar;
+package nl.kleisauke.compactcalendarviewtoolbar;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,7 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -38,26 +37,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        setTitle("Section 1");
+        setTitle("CompactCalendarViewToolbar");
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        mAppBarLayout = (AppBarLayout) findViewById(R.id.app_bar_layout);
+        mAppBarLayout = findViewById(R.id.app_bar_layout);
 
         // Set up the CompactCalendarView
-        mCompactCalendarView = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
+        mCompactCalendarView = findViewById(R.id.compactcalendar_view);
 
         // Force English
-        mCompactCalendarView.setLocale(TimeZone.getDefault(), Locale.ENGLISH);
+        mCompactCalendarView.setLocale(TimeZone.getDefault(), /*Locale.getDefault()*/Locale.ENGLISH);
 
         mCompactCalendarView.setShouldDrawDaysHeader(true);
 
@@ -76,23 +75,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Set current date to today
         setCurrentDate(new Date());
 
-        final ImageView arrow = (ImageView) findViewById(R.id.date_picker_arrow);
+        final ImageView arrow = findViewById(R.id.date_picker_arrow);
 
-        RelativeLayout datePickerButton = (RelativeLayout) findViewById(R.id.date_picker_button);
+        RelativeLayout datePickerButton = findViewById(R.id.date_picker_button);
 
-        datePickerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isExpanded) {
-                    ViewCompat.animate(arrow).rotation(0).start();
-                    mAppBarLayout.setExpanded(false, true);
-                    isExpanded = false;
-                } else {
-                    ViewCompat.animate(arrow).rotation(180).start();
-                    mAppBarLayout.setExpanded(true, true);
-                    isExpanded = true;
-                }
+        datePickerButton.setOnClickListener(v -> {
+            if (isExpanded) {
+                ViewCompat.animate(arrow).rotation(0).start();
+            } else {
+                ViewCompat.animate(arrow).rotation(180).start();
             }
+
+            isExpanded = !isExpanded;
+            mAppBarLayout.setExpanded(isExpanded, true);
         });
     }
 
@@ -101,12 +96,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (mCompactCalendarView != null) {
             mCompactCalendarView.setCurrentDate(date);
         }
-
     }
 
     @Override
     public void setTitle(CharSequence title) {
-        TextView tvTitle = (TextView) findViewById(R.id.title);
+        TextView tvTitle = findViewById(R.id.title);
 
         if (tvTitle != null) {
             tvTitle.setText(title);
@@ -114,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void setSubtitle(String subtitle) {
-        TextView datePickerTextView = (TextView) findViewById(R.id.date_picker_text_view);
+        TextView datePickerTextView = findViewById(R.id.date_picker_text_view);
 
         if (datePickerTextView != null) {
             datePickerTextView.setText(subtitle);
@@ -123,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -173,7 +167,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

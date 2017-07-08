@@ -1,4 +1,4 @@
-package com.example.kleisauke.myapplication;
+package nl.kleisauke.compactcalendarviewtoolbar;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.kleisauke.myapplication", appContext.getPackageName());
+        assertEquals("nl.kleisauke.compactcalendarviewtoolbar", appContext.getPackageName());
     }
 }

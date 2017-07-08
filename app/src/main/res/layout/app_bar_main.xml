@@ -13,7 +13,7 @@
         android:fitsSystemWindows="true"
         android:theme="@style/AppTheme.AppBarOverlay"
         app:expanded="false"
-        app:layout_behavior="com.example.compactcalendarviewtoolbar.ScrollingCalendarBehavior">
+        app:layout_behavior="nl.kleisauke.compactcalendarviewtoolbar.ScrollingCalendarBehavior">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsingToolbarLayout"
