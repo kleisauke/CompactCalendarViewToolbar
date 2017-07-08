@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="nl.kleisauke.compactcalendarviewtoolbar">
 
-    <uses-sdk tools:overrideLibrary="com.github.sundeepk.compactcalendarview"/>
+    <uses-sdk tools:overrideLibrary="com.github.sundeepk.compactcalendarview" />
 
     <application
         android:allowBackup="true"

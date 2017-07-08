@@ -1,4 +1,4 @@
-package nl.kleisauke.compactcalendarviewtoolbar;;
+package nl.kleisauke.compactcalendarviewtoolbar;
 
 import android.content.Context;
 import android.support.design.widget.AppBarLayout;
