@@ -25,11 +25,11 @@ import java.util.TimeZone;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private AppBarLayout mAppBarLayout;
+    private AppBarLayout appBarLayout;
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("d MMMM yyyy", /*Locale.getDefault()*/Locale.ENGLISH);
 
-    private CompactCalendarView mCompactCalendarView;
+    private CompactCalendarView compactCalendarView;
 
     private boolean isExpanded = false;
 
@@ -50,17 +50,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        mAppBarLayout = findViewById(R.id.app_bar_layout);
+        appBarLayout = findViewById(R.id.app_bar_layout);
 
         // Set up the CompactCalendarView
-        mCompactCalendarView = findViewById(R.id.compactcalendar_view);
+        compactCalendarView = findViewById(R.id.compactcalendar_view);
 
         // Force English
-        mCompactCalendarView.setLocale(TimeZone.getDefault(), /*Locale.getDefault()*/Locale.ENGLISH);
+        compactCalendarView.setLocale(TimeZone.getDefault(), /*Locale.getDefault()*/Locale.ENGLISH);
 
-        mCompactCalendarView.setShouldDrawDaysHeader(true);
+        compactCalendarView.setShouldDrawDaysHeader(true);
 
-        mCompactCalendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
+        compactCalendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
             public void onDayClick(Date dateClicked) {
                 setSubtitle(dateFormat.format(dateClicked));
@@ -87,14 +87,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
 
             isExpanded = !isExpanded;
-            mAppBarLayout.setExpanded(isExpanded, true);
+            appBarLayout.setExpanded(isExpanded, true);
         });
     }
 
     public void setCurrentDate(Date date) {
         setSubtitle(dateFormat.format(date));
-        if (mCompactCalendarView != null) {
-            mCompactCalendarView.setCurrentDate(date);
+        if (compactCalendarView != null) {
+            compactCalendarView.setCurrentDate(date);
         }
     }
 
