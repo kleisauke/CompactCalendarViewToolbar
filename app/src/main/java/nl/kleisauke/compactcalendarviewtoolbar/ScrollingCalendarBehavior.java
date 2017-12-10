@@ -6,6 +6,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
+@SuppressWarnings("unused")
 public class ScrollingCalendarBehavior extends AppBarLayout.Behavior {
 
     public ScrollingCalendarBehavior(Context context, AttributeSet attrs) {

@@ -60,7 +60,8 @@
                     android:layout_height="?attr/actionBarSize"
                     android:background="?android:selectableItemBackground"
                     android:clickable="true"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:focusable="true">
 
                     <View
                         android:id="@+id/centerInParent"

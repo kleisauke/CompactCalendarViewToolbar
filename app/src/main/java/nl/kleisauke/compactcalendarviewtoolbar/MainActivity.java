@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private AppBarLayout appBarLayout;
 
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("d MMMM yyyy", /*Locale.getDefault()*/Locale.ENGLISH);
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat("d MMMM yyyy", /*Locale.getDefault()*/Locale.ENGLISH);
 
     private CompactCalendarView compactCalendarView;
 
@@ -80,18 +80,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         RelativeLayout datePickerButton = findViewById(R.id.date_picker_button);
 
         datePickerButton.setOnClickListener(v -> {
-            if (isExpanded) {
-                ViewCompat.animate(arrow).rotation(0).start();
-            } else {
-                ViewCompat.animate(arrow).rotation(180).start();
-            }
+            float rotation = isExpanded ? 0 : 180;
+            ViewCompat.animate(arrow).rotation(rotation).start();
 
             isExpanded = !isExpanded;
             appBarLayout.setExpanded(isExpanded, true);
         });
     }
 
-    public void setCurrentDate(Date date) {
+    private void setCurrentDate(Date date) {
         setSubtitle(dateFormat.format(date));
         if (compactCalendarView != null) {
             compactCalendarView.setCurrentDate(date);
@@ -107,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    public void setSubtitle(String subtitle) {
+    private void setSubtitle(String subtitle) {
         TextView datePickerTextView = findViewById(R.id.date_picker_text_view);
 
         if (datePickerTextView != null) {
